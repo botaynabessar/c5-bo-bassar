@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solutions JS — DOM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page-wrapper">
+
+    <header>
+        <div class="badge">✦ JavaScript DOM</div>
+        <h1>10 Exercices<br>Corrigés</h1>
+        <p>Manipulation du DOM — Toutes les solutions interactives</p>
+    </header>
+
+    <div class="section-title">Partie 1 — Les bases du DOM</div>
+
+    <!-- ─── EXERCICE 1 ─── -->
+    <div class="exercice">
+        <div class="ex-header"><div class="ex-num">01</div><h2>Changer le texte d'un élément</h2></div>
+        <div class="ex-body">
+            <div class="consigne"><strong>Objectif :</strong> Changer le texte d'un paragraphe via un bouton.<br><strong>Méthodes :</strong> <code>querySelector</code>, <code>innerText</code></div>
+            <div class="zone-travail">
+                <p id="texte1">Texte original</p>
+                <button onclick="changerTexte()">Changer le texte</button>
+                <button class="btn-secondary" onclick="document.getElementById('texte1').innerText='Texte original'">Reset</button>
+            </div>
+            <div class="code-block"><div class="code-block-header"><span>solution.js</span></div>
+<pre><span class="kw">function</span> <span class="fn">changerTexte</span>() {
+  <span class="kw">const</span> element = document.<span class="fn">querySelector</span>(<span class="str">'#texte1'</span>);
+  element.innerText = <span class="str">"Texte modifié !"</span>;
+}</pre></div>
+        </div>
+    </div>
+
+    <!-- ─── EXERCICE 2 ─── -->
+    <div class="exercice">
+        <div class="ex-header"><div class="ex-num">02</div><h2>Changer la couleur d'un élément</h2></div>
+        <div class="ex-body">
+            <div class="consigne"><strong>Objectif :</strong> Changer la couleur d'un titre avec trois boutons.<br><strong>Méthodes :</strong> <code>querySelector</code>, <code>style.color</code></div>
+            <div class="zone-travail">
+                <h3 id="titre2">Je suis un titre</h3>
+                <button onclick="changerCouleur()" style="background:#ef4444">Rouge</button>
+                <button onclick="changerCouleurVert()" style="background:#22c55e">Vert</button>
+                <button onclick="changerCouleurBleu()" style="background:#3b82f6">Bleu</button>
+                <button class="btn-secondary" onclick="document.getElementById('titre2').style.color=''">Reset</button>
+            </div>
+            <div class="code-block"><div class="code-block-header"><span>solution.js</span></div>
+<pre><span class="kw">function</span> <span class="fn">changerCouleur</span>()      { document.<span class="fn">querySelector</span>(<span class="str">'#titre2'</span>).style.color = <span class="str">'red'</span>; }
+<span class="kw">function</span> <span class="fn">changerCouleurVert</span>() { document.<span class="fn">querySelector</span>(<span class="str">'#titre2'</span>).style.color = <span class="str">'green'</span>; }
+<span class="kw">function</span> <span class="fn">changerCouleurBleu</span>() { document.<span class="fn">querySelector</span>(<span class="str">'#titre2'</span>).style.color = <span class="str">'blue'</span>; }</pre></div>
+        </div>
+    </div>
+
+    <!-- ─── EXERCICE 3 ─── -->
+    <div class="exercice">
+        <div class="ex-header"><div class="ex-num">03</div><h2>Ajouter du HTML dynamiquement</h2></div>
+        <div class="ex-body">
+            <div class="consigne"><strong>Objectif :</strong> Insérer du contenu HTML dans un conteneur.<br><strong>Méthodes :</strong> <code>querySelector</code>, <code>innerHTML</code></div>
+            <div class="zone-travail">
+                <div id="conteneur3"></div>
+                <button onclick="ajouterContenu()">Ajouter du contenu</button>
+                <button class="btn-danger" onclick="effacerContenu()">Effacer</button>
+            </div>
+            <div class="code-block"><div class="code-block-header"><span>solution.js</span></div>
+<pre><span class="kw">function</span> <span class="fn">ajouterContenu</span>() {
+  document.<span class="fn">querySelector</span>(<span class="str">'#conteneur3'</span>).innerHTML =
+    <span class="str">'&lt;h4&gt;Nouveau titre&lt;/h4&gt;&lt;p&gt;Nouveau paragraphe&lt;/p&gt;'</span>;
+}
+<span class="kw">function</span> <span class="fn">effacerContenu</span>() {
+  document.<span class="fn">querySelector</span>(<span class="str">'#conteneur3'</span>).innerHTML = <span class="str">''</span>;
+}</pre></div>
+        </div>
+    </div>
+
+    <!-- ─── EXERCICE 4 ─── -->
+    <div class="exercice">
+        <div class="ex-header"><div class="ex-num">04</div><h2>Ajouter et enlever des classes CSS</h2></div>
+        <div class="ex-body">
+            <div class="consigne"><strong>Objectif :</strong> Manipuler les classes d'un élément.<br><strong>Méthodes :</strong> <code>classList.add()</code>, <code>classList.remove()</code>, <code>classList.toggle()</code></div>
+            <div class="zone-travail">
+                <p id="paragraphe4">Je suis un paragraphe normal</p>
+                <button onclick="ajouterClasse()">Ajouter style</button>
+                <button class="btn-secondary" onclick="enleverClasse()">Enlever style</button>
+                <button class="btn-secondary" onclick="basculerClasse()">Basculer bordure</button>
+            </div>
+            <div class="code-block"><div class="code-block-header"><span>solution.js</span></div>
+<pre><span class="kw">function</span> <span class="fn">ajouterClasse</span>() {
+  document.<span class="fn">querySelector</span>(<span class="str">'#paragraphe4'</span>).classList.<span class="fn">add</span>(<span class="str">'rouge'</span>, <span class="str">'grand-texte'</span>);
+}
+<span class="kw">function</span> <span class="fn">enleverClasse</span>() {
+  document.<span class="fn">querySelector</span>(<span class="str">'#paragraphe4'</span>).classList.<span class="fn">remove</span>(<span class="str">'rouge'</span>, <span class="str">'grand-texte'</span>);
+}
+<span class="kw">function</span> <span class="fn">basculerClasse</span>() {
+  document.<span class="fn">querySelector</span>(<span class="str">'#paragraphe4'</span>).classList.<span class="fn">toggle</span>(<span class="str">'bordure'</span>);
+}</pre></div>
+        </div>
+    </div>
+
+    <!-- ─── EXERCICE 5 ─── -->
+    <div class="exercice">
+        <div class="ex-header"><div class="ex-num">05</div><h2>Modifier plusieurs éléments</h2></div>
+        <div class="ex-body">
+            <div class="consigne"><strong>Objectif :</strong> Cibler tous les éléments d'une même classe.<br><strong>Méthodes :</strong> <code>querySelectorAll</code>, boucle <code>for</code></div>
+            <div class="zone-travail">
+                <div class="item">Item 1</div><div class="item">Item 2</div>
+                <div class="item">Item 3</div><div class="item">Item 4</div>
+                <br><br>
+                <button onclick="colorierTous()">Colorier tous</button>
+                <button onclick="numeroteTous()">Numéroter</button>
+                <button class="btn-secondary" onclick="resetItems()">Reset</button>
+            </div>
+            <div class="code-block"><div class="code-block-header"><span>solution.js</span></div>
+<pre><span class="kw">function</span> <span class="fn">colorierTous</span>() {
+  document.<span class="fn">querySelectorAll</span>(<span class="str">'.item'</span>).<span class="fn">forEach</span>(el => el.classList.<span class="fn">add</span>(<span class="str">'fond-jaune'</span>));
+}
+<span class="kw">function</span> <span class="fn">numeroteTous</span>() {
+  <span class="kw">const</span> items = document.<span class="fn">querySelectorAll</span>(<span class="str">'.item'</span>);
+  <span class="kw">for</span> (<span class="kw">let</span> i = <span class="num">0</span>; i &lt; items.length; i++) {
+    items[i].innerText = (i + <span class="num">1</span>) + <span class="str">'. Item '</span> + (i + <span class="num">1</span>);
+  }
+}</pre></div>
+        </div>
+    </div>
+
+    <!-- ─── EXERCICE 6 ─── -->
+    <div class="exercice">
+        <div class="ex-header"><div class="ex-num">06</div><h2>Sélecteur de couleur de fond</h2></div>
+        <div class="ex-body">
+            <div class="consigne"><strong>Objectif :</strong> Changer le fond d'une zone en cliquant sur une boîte.<br><strong>Méthodes :</strong> <code>style</code>, <code>classList</code>, <code>querySelectorAll</code></div>
+            <div class="zone-travail" id="zone6">
+                <div class="boite" style="background:#ef4444" onclick="changerFond('zone6','#ffd6d6',this)"></div>
+                <div class="boite" style="background:#22c55e" onclick="changerFond('zone6','#d6f5e3',this)"></div>
+                <div class="boite" style="background:#3b82f6" onclick="changerFond('zone6','#d6e8ff',this)"></div>
+                <div class="boite" style="background:#f59e0b" onclick="changerFond('zone6','#fff3cd',this)"></div>
+                <br><br>
+                <button class="btn-secondary" onclick="reinitialiserFond('zone6')">Réinitialiser</button>
+            </div>
+            <div class="code-block"><div class="code-block-header"><span>solution.js</span></div>
+<pre><span class="kw">function</span> <span class="fn">changerFond</span>(zoneId, couleur, boiteCliquee) {
+  document.<span class="fn">getElementById</span>(zoneId).style.backgroundColor = couleur;
+  document.<span class="fn">querySelectorAll</span>(<span class="str">'.boite'</span>).<span class="fn">forEach</span>(b => b.classList.<span class="fn">remove</span>(<span class="str">'actif'</span>));
+  boiteCliquee.classList.<span class="fn">add</span>(<span class="str">'actif'</span>);
+}
+<span class="kw">function</span> <span class="fn">reinitialiserFond</span>(zoneId) {
+  document.<span class="fn">getElementById</span>(zoneId).style.backgroundColor = <span class="str">''</span>;
+  document.<span class="fn">querySelectorAll</span>(<span class="str">'.boite'</span>).<span class="fn">forEach</span>(b => b.classList.<span class="fn">remove</span>(<span class="str">'actif'</span>));
+}</pre></div>
+        </div>
+    </div>
+
+    <!-- ─── EXERCICE 7 ─── -->
+    <div class="exercice">
+        <div class="ex-header"><div class="ex-num">07</div><h2>Formulaire dynamique</h2></div>
+        <div class="ex-body">
+            <div class="consigne"><strong>Objectif :</strong> Afficher le nom en temps réel et appliquer une couleur.<br><strong>Méthodes :</strong> <code>value</code>, <code>innerText</code>, <code>style.color</code></div>
+            <div class="zone-travail">
+                <input type="text" id="nom" placeholder="Votre nom" oninput="afficherNom()">
+                <select id="couleur7" onchange="appliquerCouleur()">
+                    <option value="">Choisir une couleur</option>
+                    <option value="red">Rouge</option>
+                    <option value="green">Vert</option>
+                    <option value="blue">Bleu</option>
+                </select>
+                <p id="affichage7">Votre nom apparaîtra ici</p>
+            </div>
+            <div class="code-block"><div class="code-block-header"><span>solution.js</span></div>
+<pre><span class="kw">function</span> <span class="fn">afficherNom</span>() {
+  <span class="kw">const</span> nom = document.<span class="fn">querySelector</span>(<span class="str">'#nom'</span>).value;
+  document.<span class="fn">querySelector</span>(<span class="str">'#affichage7'</span>).innerText =
+    nom.trim() === <span class="str">''</span> ? <span class="str">'Votre nom apparaîtra ici'</span> : <span class="str">`Bonjour ${nom} !`</span>;
+}
+<span class="kw">function</span> <span class="fn">appliquerCouleur</span>() {
+  <span class="kw">const</span> couleur = document.<span class="fn">querySelector</span>(<span class="str">'#couleur7'</span>).value;
+  document.<span class="fn">querySelector</span>(<span class="str">'#affichage7'</span>).style.color = couleur;
+}</pre></div>
+        </div>
+    </div>
+
+    <!-- ─── EXERCICE 8 ─── -->
+    <div class="exercice">
+        <div class="ex-header"><div class="ex-num">08</div><h2>Liste TODO</h2></div>
+        <div class="ex-body">
+            <div class="consigne"><strong>Objectif :</strong> Ajouter et supprimer des tâches.<br><strong>Méthodes :</strong> <code>createElement</code>, <code>appendChild</code>, <code>remove()</code></div>
+            <div class="zone-travail">
+                <input type="text" id="tache" placeholder="Nouvelle tâche" onkeydown="if(event.key==='Enter') ajouterTache()">
+                <button onclick="ajouterTache()">Ajouter</button>
+                <button class="btn-danger" onclick="effacerTout()">Tout effacer</button>
+                <ul id="listeTaches"></ul>
+            </div>
+            <div class="code-block"><div class="code-block-header"><span>solution.js</span></div>
+<pre><span class="kw">function</span> <span class="fn">ajouterTache</span>() {
+  <span class="kw">const</span> input = document.<span class="fn">querySelector</span>(<span class="str">'#tache'</span>);
+  <span class="kw">const</span> texte = input.value.trim();
+  <span class="kw">if</span> (texte === <span class="str">''</span>) <span class="kw">return</span>;
+  <span class="kw">const</span> li = document.<span class="fn">createElement</span>(<span class="str">'li'</span>);
+  li.innerHTML = <span class="str">`&lt;span&gt;${texte}&lt;/span&gt;
+    &lt;button onclick="supprimerTache(this)"&gt;X&lt;/button&gt;`</span>;
+  document.<span class="fn">querySelector</span>(<span class="str">'#listeTaches'</span>).<span class="fn">appendChild</span>(li);
+  input.value = <span class="str">''</span>;
+}
+<span class="kw">function</span> <span class="fn">supprimerTache</span>(b) { b.parentElement.<span class="fn">remove</span>(); }
+<span class="kw">function</span> <span class="fn">effacerTout</span>() { document.<span class="fn">querySelector</span>(<span class="str">'#listeTaches'</span>).innerHTML = <span class="str">''</span>; }</pre></div>
+        </div>
+    </div>
+
+    <!-- ─── EXERCICE 9 ─── -->
+    <div class="exercice">
+        <div class="ex-header"><div class="ex-num">09</div><h2>Compteur avec conditions de couleur</h2></div>
+        <div class="ex-body">
+            <div class="consigne"><strong>Objectif :</strong> Compteur qui change de couleur selon la valeur.<br><strong>Méthodes :</strong> <code>innerText</code>, <code>classList</code>, conditions</div>
+            <div class="zone-travail" style="text-align:center">
+                <h3 id="compteur">0</h3>
+                <button onclick="incrementer()">+1</button>
+                <button onclick="decrementer()">-1</button>
+                <button class="btn-secondary" onclick="reinitialiser()">Reset</button>
+                <p style="font-size:0.8rem;color:var(--text-muted);margin-top:12px">🔴 négatif &nbsp;|&nbsp; ⚫ zéro &nbsp;|&nbsp; 🟢 positif</p>
+            </div>
+            <div class="code-block"><div class="code-block-header"><span>solution.js</span></div>
+<pre><span class="kw">let</span> valeur = <span class="num">0</span>;
+<span class="kw">function</span> <span class="fn">incrementer</span>() { valeur++; <span class="fn">afficherCompteur</span>(); }
+<span class="kw">function</span> <span class="fn">decrementer</span>() { valeur--; <span class="fn">afficherCompteur</span>(); }
+<span class="kw">function</span> <span class="fn">reinitialiser</span>() { valeur = <span class="num">0</span>; <span class="fn">afficherCompteur</span>(); }
+<span class="kw">function</span> <span class="fn">afficherCompteur</span>() {
+  <span class="kw">const</span> el = document.<span class="fn">querySelector</span>(<span class="str">'#compteur'</span>);
+  el.innerText = valeur;
+  el.classList.<span class="fn">remove</span>(<span class="str">'rouge'</span>, <span class="str">'vert'</span>);
+  <span class="kw">if</span> (valeur &lt; <span class="num">0</span>) el.classList.<span class="fn">add</span>(<span class="str">'rouge'</span>);
+  <span class="kw">else if</span> (valeur &gt; <span class="num">0</span>) el.classList.<span class="fn">add</span>(<span class="str">'vert'</span>);
+}</pre></div>
+        </div>
+    </div>
+
+    <!-- ─── EXERCICE 10 ─── -->
+    <div class="exercice">
+        <div class="ex-header"><div class="ex-num">10</div><h2>Système d'onglets</h2></div>
+        <div class="ex-body">
+            <div class="consigne"><strong>Objectif :</strong> Afficher un seul onglet à la fois et marquer le bouton actif.<br><strong>Méthodes :</strong> <code>querySelectorAll</code>, <code>classList</code>, <code>forEach</code></div>
+            <div class="zone-travail">
+                <div class="tabs-btns">
+                    <button class="onglet actif" onclick="afficherOnglet(1)">Onglet 1</button>
+                    <button class="onglet" onclick="afficherOnglet(2)">Onglet 2</button>
+                    <button class="onglet" onclick="afficherOnglet(3)">Onglet 3</button>
+                </div>
+                <div id="contenu1" class="contenu-onglet visible"><h4>Contenu de l'onglet 1</h4><p>Lorem ipsum dolor sit amet.</p></div>
+                <div id="contenu2" class="contenu-onglet cache"><h4>Contenu de l'onglet 2</h4><p>Consectetur adipiscing elit.</p></div>
+                <div id="contenu3" class="contenu-onglet cache"><h4>Contenu de l'onglet 3</h4><p>Sed do eiusmod tempor.</p></div>
+            </div>
+            <div class="code-block"><div class="code-block-header"><span>solution.js</span></div>
+<pre><span class="kw">function</span> <span class="fn">afficherOnglet</span>(numero) {
+  document.<span class="fn">querySelectorAll</span>(<span class="str">'.contenu-onglet'</span>).<span class="fn">forEach</span>(d => {
+    d.classList.<span class="fn">remove</span>(<span class="str">'visible'</span>); d.classList.<span class="fn">add</span>(<span class="str">'cache'</span>);
+  });
+  document.<span class="fn">querySelector</span>(<span class="str">`#contenu${numero}`</span>).classList.<span class="fn">replace</span>(<span class="str">'cache'</span>, <span class="str">'visible'</span>);
+  document.<span class="fn">querySelectorAll</span>(<span class="str">'.onglet'</span>).<span class="fn">forEach</span>(b => b.classList.<span class="fn">remove</span>(<span class="str">'actif'</span>));
+  document.<span class="fn">querySelectorAll</span>(<span class="str">'.onglet'</span>)[numero - <span class="num">1</span>].classList.<span class="fn">add</span>(<span class="str">'actif'</span>);
+}</pre></div>
+        </div>
+    </div>
+
+</div><!-- end page-wrapper -->
+
+<script src="script.js"></script>
+</body>
+</html>
